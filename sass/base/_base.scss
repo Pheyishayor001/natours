@@ -1,0 +1,65 @@
+/* reset */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+
+    /* it will inherit the box sizing 
+  value from the body*/
+    box-sizing: inherit;
+}
+
+html {
+  /* by defining the universal fontsize in %, it will 
+  make the responsiveness be easier to handle.
+
+  the default font-size is 16px, but setting 10px as
+  the default makes it easier to convert from rem to PX.
+
+  the equivalent of 10px in % is 62.5% (i.e 16px = 100%) */
+
+  font-size: 162.5%; //1rem = 10px; 10px/16px = 62.5%
+
+ 
+  @include respond(tab-land) { // width < 1200?
+    font-size: 56.25%;  //1rem = 9px, 9/16 =56.25%
+  }
+
+  @include respond(tab-port) { // width < 900?
+    font-size: 50%;  //1rem = 8px, 8/16 = 50%
+  }
+
+  // @include respond(phone) { // width < 600?
+  // the phone will inherit its fontsize from the tab
+  // -port, 50%.
+  // }
+
+  @include respond(big-desktop) {
+    font-size: 75%;   //1rem = 12, 12/16 = 75%
+  }
+}
+
+// NOTE!!!
+/* when making declarations in Media Queries (esp when using "max-width")
+  the latter declared desings/values will
+  always takes precedence. i.e. the declaration in the larger screen will
+  over ride the design made for smaller screens.
+  To prevent this, the larger screens should be declared first 
+  before the smaller ones, so that the designs for the larger screens
+  does not override that of the smaller screen 
+*/
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
