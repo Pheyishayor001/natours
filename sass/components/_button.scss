@@ -1,0 +1,120 @@
+/* styling the header btn */
+.btn {
+
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+
+        /* the display below makes the button have both the 
+        feature of an inline and block display. */
+        display: inline-block;
+
+        border-radius: 10rem;
+        transition: all .2s;
+
+        /* this is for the ::after psuedo element's absolute
+        position to have effect */
+        position: relative;
+        font-size: $default-font-size;
+
+        // Change for the <button> element
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        /* the negative value below is used to make the btn
+  move from bottom to top. The default setting is to move
+  from top to bottom */
+        transform: translateY(-3px);
+
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+        &::after {
+            transform: scalex(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+
+        /* the box-shadow below is to make the button
+        seem closer to the page when clicked (active) */
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+    
+        &::after {
+        background-color: $color-primary;
+        }
+    }
+
+    &::after {
+        /* displaying/defining both the content and display 
+  property is compulsory for the ::after psuedo element */
+        content: "";
+        display: inline-block;
+
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        transition: all 0.4s;
+    }
+
+    &--animated {
+        animation: moveInBottom 0.5s ease-out 0.75s;
+
+        /* this animation-fill-mode automatically applies the 
+  animation at 0% (i.e the opacity: 0;) before the 
+  animation even starts */
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover{
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+            transform: translateY(0);
+    }    
+}
