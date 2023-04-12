@@ -72,7 +72,7 @@ html {
   the default makes it easier to convert from rem to PX.
 
   the equivalent of 10px in % is 62.5% (i.e 16px = 100%) */
-  font-size: 162.5%; }
+  font-size: 62.5%; }
   @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
